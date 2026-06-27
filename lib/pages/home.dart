@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'bargain.dart';
 
 class Homepage extends StatefulWidget {//ui changes so statelful
   const Homepage({super.key});
@@ -567,18 +568,23 @@ Widget build(BuildContext context){
                         ),
                       ),
                       const Spacer(),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: item['actionColor'] as Color,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: Text(
-                          item['actionLabel'] as String,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w700,
+                      GestureDetector(
+                        onTap: item['actionLabel'] == 'Offer'
+                            ? () => _openBargainPage(context, item)
+                            : null,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: item['actionColor'] as Color,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          child: Text(
+                            item['actionLabel'] as String,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ),
@@ -589,6 +595,14 @@ Widget build(BuildContext context){
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  void _openBargainPage(BuildContext context, Map<String, dynamic>? item) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => BargainPage(item: item),
       ),
     );
   }
@@ -648,7 +662,13 @@ Widget build(BuildContext context){
           final selected = _bottomNavIndex == (i > 2 ? i - 1 : i);
           return Expanded(
             child: GestureDetector(
-              onTap: () => setState(() => _bottomNavIndex = i > 2 ? i - 1 : i),
+              onTap: () {
+                if (i == 1) {
+                  _openBargainPage(context, null);
+                } else {
+                  setState(() => _bottomNavIndex = i > 2 ? i - 1 : i);
+                }
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
