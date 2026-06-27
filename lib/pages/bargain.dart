@@ -260,7 +260,7 @@ class _BargainPageState extends State<BargainPage> {
           ),
           const SizedBox(height: 10),
           _buildOfferBubble(
-            amount: '₹65,000',
+            amount: 'Rs.65,000',
             status: 'Declined',
             color: const Color(0xFFFEE2E2),
             borderColor: const Color(0xFFEF4444),
@@ -269,13 +269,13 @@ class _BargainPageState extends State<BargainPage> {
           ),
           const SizedBox(height: 10),
           _buildChatBubble(
-            text: 'That\'s a bit low. Best I can do is ₹70,000 — it\'s in excellent condition with original box.',
+            text: 'That\'s a bit low. Best I can do is Rs.70,000 — it\'s in excellent condition with original box.',
             time: '10:30 AM',
             isSent: true,
           ),
           const SizedBox(height: 10),
           _buildOfferBubble(
-            amount: '₹70,000',
+            amount: 'Rs.70,000',
             status: 'Accepted',
             color: const Color(0xFFE6F4EA),
             borderColor: const Color(0xFF16A34A),
