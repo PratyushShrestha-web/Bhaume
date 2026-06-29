@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'bargain.dart';
+import 'auction.dart';
 
 class Homepage extends StatefulWidget {//ui changes so statelful
   const Homepage({super.key});
@@ -571,7 +572,9 @@ Widget build(BuildContext context){
                       GestureDetector(
                         onTap: item['actionLabel'] == 'Offer'
                             ? () => _openBargainPage(context, item)
-                            : null,
+                            : item['actionLabel'] == 'Bid'
+                                ? () => _openAuctionPage(context)
+                                : null,
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                           decoration: BoxDecoration(
@@ -606,6 +609,14 @@ Widget build(BuildContext context){
       ),
     );
   }
+
+  void _openAuctionPage(BuildContext context) {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (_) => const AuctionPage(),
+    ),
+  );
+}
 
   Widget _buildSellFAB() {
     return Container(
@@ -665,6 +676,10 @@ Widget build(BuildContext context){
               onTap: () {
                 if (i == 1) {
                   _openBargainPage(context, null);
+                } else if (i == 3) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (_) => const AuctionPage()),
+                  );
                 } else {
                   setState(() => _bottomNavIndex = i > 2 ? i - 1 : i);
                 }

@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'bargain.dart';
 import 'auction.dart';
-import 'message.dart';
 import 'home.dart';
 
-class SellPage extends StatelessWidget {
-  const SellPage({super.key});
+class MessagePage extends StatelessWidget {
+  const MessagePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sell'),
+        title: const Text('Messages'),
         backgroundColor: const Color(0xFF1A56DB),
         foregroundColor: Colors.white,
       ),
       body: const Center(
-        child: Text('Sell screen'),
+        child: Text('Chat screen'),
       ),
       bottomNavigationBar: _buildBottomNav(context),
     );
@@ -74,7 +73,7 @@ class SellPage extends StatelessWidget {
                   Icon(
                     items[i]['icon'] as IconData,
                     size: 22,
-                    color: i == 2
+                    color: i == 4
                         ? const Color(0xFF1A56DB)
                         : const Color(0xFF9CA3AF),
                   ),
@@ -83,7 +82,7 @@ class SellPage extends StatelessWidget {
                     items[i]['label'] as String,
                     style: TextStyle(
                       fontSize: 10,
-                      color: i == 2
+                      color: i == 4
                           ? const Color(0xFF1A56DB)
                           : const Color(0xFF9CA3AF),
                       fontWeight: FontWeight.normal,
